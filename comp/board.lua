@@ -23,6 +23,8 @@ Flags:
 	& - Repeat
 ]]
 
+local piece = require("./piece")
+
 ---@class FOXChess.Board
 local board = {}
 
@@ -52,7 +54,7 @@ function board.str_to_tbl(str)
 
 		for _ = 1, tonumber(op:match("&(%d)")) or 1 do
 			if is_piece then
-				tbl[y][x] = { key = key, black = is_black, special = is_special }
+				tbl[y][x] = piece.new(key, is_black, is_special)
 			elseif key == ";" then
 				x, y = 0, y + 1
 				tbl[y] = {}
