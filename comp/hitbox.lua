@@ -49,7 +49,7 @@ function hitbox.new(entity, board)
 
 		-- Place chess board
 
-		if entity:isSwingingArm() or entity:isUsingItem() then
+		if assets.press(entity) then
 			board.model
 				:pos(hit + vec(0, -1.75 + 1.75 / 16, 0))
 				:rot(0, yaw)
