@@ -4,7 +4,7 @@ local timers = require("./comp/timers")
 -- print(boards.new():saveState())
 
 function events.entity_init()
-	local black = timers.new(player, "Black", 10 * 60 * 20)
+	local black = timers.new(player, "Black", 10)
 
 	function events.tick()
 		black:tick()

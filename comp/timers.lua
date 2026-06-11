@@ -1,6 +1,11 @@
 ---@class FOXChess.Timers
 local timers = {}
 
+--[[Ideas:
+To the viewer, their timer will not be visible next to them but instead will show above the board(s) they're playing
+To onlookers, they will have a timer next to them only if they're looking towards the board or sumn
+]]
+
 ---@class FOXChess.Timer
 ---@field private part ModelPart
 ---@field private task TextTask
@@ -19,6 +24,8 @@ local root = models:newPart("chess_world", "World"):scale(16)
 ---@return FOXChess.Timer
 ---@nodiscard
 function timers.new(entity, color, time)
+	-- Setup rendering to align to entity position in world space
+
 	local part = root:newPart(entity:getUUID()):scale(1 / 16)
 
 	local pivot = part
@@ -33,15 +40,28 @@ function timers.new(entity, color, time)
 		:background(true)
 
 	function part.preRender(delta)
-		part:pos(entity:getPos(delta))
-		task:visible(client.isHudEnabled())
+		-- Move to entity position
+		-- Hide if entity isn't rendering or UI is hidden 
+
+		if entity:isLoaded() then
+			part:pos(entity:getPos(delta))
+			task:visible(client.isHudEnabled())
+		else
+			task:visible(false)
+		end
 	end
 
-	return setmetatable({ part = part, task = task, color = color, time = time }, class)
+	-- Set timer text and return (Add a tick to simulate a full second passing)
+
+	local self = setmetatable({ part = part, task = task, color = color, time = math.floor(time * 60) * 20 + 1 }, class)
+	self:tick()
+	return self
 end
 
 ---Runs the countdown timer
 function class:tick()
+	-- Change timer text only after a full second has elapsed
+
 	self.time = math.max(self.time - 1, 0)
 
 	local min = self.time / 20 / 60
