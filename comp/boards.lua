@@ -25,7 +25,7 @@ end
 
 ---Loads a chess board save state
 ---
----A nil value resets the board
+---A nil or invalid state resets the board
 ---@param state string?
 ---@return self
 function class:loadState(state)
