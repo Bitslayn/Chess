@@ -1,5 +1,5 @@
-local board = require("./comp/board")
-local timers = require("./comp/timer")
+local boards = require("./comp/boards")
+local timers = require("./comp/timers")
 
 local default = ";r*nbqkbnr*;p&8;&5P&8;R*NBQKBNR*"
 

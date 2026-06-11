@@ -1,5 +1,5 @@
 ---@class FOXChess.Timers
-local timer = {}
+local timers = {}
 
 ---@class FOXChess.Timer
 ---@field private part ModelPart
@@ -17,7 +17,7 @@ local root = models:newPart("chess_world", "World"):scale(16)
 ---@param color string
 ---@param time integer
 ---@return FOXChess.Timer
-function timer.new(entity, color, time)
+function timers.new(entity, color, time)
 	local part = root:newPart(entity:getUUID()):scale(1 / 16)
 
 	local pivot = part
@@ -33,6 +33,7 @@ function timer.new(entity, color, time)
 
 	function part.preRender(delta)
 		part:pos(entity:getPos(delta))
+		task:visible(client.isHudEnabled())
 	end
 
 	return setmetatable({ part = part, task = task, color = color, time = time }, class)
@@ -55,4 +56,4 @@ function class:remove()
 	self.part:remove()
 end
 
-return timer
+return timers

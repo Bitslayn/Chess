@@ -23,10 +23,16 @@ Flags:
 	& - Repeat
 ]]
 
-local piece = require("./piece")
+local pieces = require("./piece")
+
+---@class FOXChess.Boards
+local boards = {}
 
 ---@class FOXChess.Board
-local board = {}
+---@field pieces FOXChess.Piece[][]
+local class = {}
+---@package
+class.__index = class
 
 local symbols = "PBNRQKpbnrqk;.*&"
 
@@ -43,7 +49,7 @@ end
 
 ---@param str string
 ---@return table
-function board.str_to_tbl(str)
+local function str_to_tbl(str)
 	local tbl = {}
 	local x, y = 0, 0
 
@@ -54,7 +60,7 @@ function board.str_to_tbl(str)
 
 		for _ = 1, tonumber(op:match("&(%d)")) or 1 do
 			if is_piece then
-				tbl[y][x] = piece.new(key, is_black, is_special)
+				tbl[y][x] = pieces.new(key, is_black, is_special)
 			elseif key == ";" then
 				x, y = 0, y + 1
 				tbl[y] = {}
@@ -69,7 +75,7 @@ end
 
 ---@param tbl table
 ---@return string
-function board.tbl_to_str(tbl)
+local function tbl_to_str(tbl)
 	local raw = {}
 
 	for y = 1, 8 do
@@ -101,7 +107,7 @@ end
 
 ---@param str string
 ---@return integer ...
-function board.str_to_int(str)
+local function str_to_int(str)
 	local nibbles = {}
 	for w in str:gmatch(".") do
 		nibbles[#nibbles + 1] = str_map[w] or tonumber(w)
@@ -118,7 +124,7 @@ end
 
 ---@param ... integer
 ---@return string
-function board.int_to_str(...)
+local function int_to_str(...)
 	local bits = { ... }
 	local str = {}
 
@@ -132,4 +138,8 @@ function board.int_to_str(...)
 	return table.concat(str)
 end
 
-return board
+function boards.new()
+	return setmetatable({}, class)
+end
+
+return boards
