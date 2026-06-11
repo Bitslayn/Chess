@@ -4,7 +4,7 @@
 		"model_format": "free",
 		"box_uv": false
 	},
-	"name": "chess",
+	"name": "model",
 	"model_identifier": "",
 	"visible_box": [1, 1, 0],
 	"variable_placeholders": "",
@@ -17,7 +17,7 @@
 	},
 	"elements": [
 		{
-			"name": "king",
+			"name": "King",
 			"color": 4,
 			"origin": [0, 1.75, 0],
 			"rotation": [0, 0, 0],
@@ -169,10 +169,10 @@
 				},
 				"X9qYxQ7Q": {
 					"uv": {
-						"9KWS": [2, 0],
-						"r5Ue": [1, 0],
+						"QXPW": [1, 3],
 						"JVHV": [2, 3],
-						"QXPW": [1, 3]
+						"r5Ue": [1, 0],
+						"9KWS": [2, 0]
 					},
 					"vertices": ["9KWS", "r5Ue", "JVHV", "QXPW"],
 					"texture": 0
@@ -181,8 +181,8 @@
 					"uv": {
 						"Xm2V": [0, 2],
 						"QVDc": [3, 2],
-						"HvUW": [0, 1],
-						"9mxV": [3, 1]
+						"9mxV": [3, 1],
+						"HvUW": [0, 1]
 					},
 					"vertices": ["HvUW", "9mxV", "QVDc", "Xm2V"],
 					"texture": 0
@@ -342,7 +342,7 @@
 			"uuid": "7618d5b7-f8a8-f099-0dd5-b1f39c315f7a"
 		},
 		{
-			"name": "rook",
+			"name": "Rook",
 			"color": 9,
 			"origin": [0, 1.75, 0],
 			"rotation": [0, 0, 0],
@@ -727,7 +727,7 @@
 			"uuid": "95df2d99-7792-c090-a221-fff80bfcc453"
 		},
 		{
-			"name": "board",
+			"name": "Board",
 			"color": 7,
 			"origin": [0, 1.75, 0],
 			"rotation": [0, 0, 0],
@@ -765,60 +765,60 @@
 			"faces": {
 				"Dqvzl8SM": {
 					"uv": {
-						"QfvF": [0, 1],
-						"WZxU": [72, 1],
+						"QfvF": [0, 0.22222],
+						"WZxU": [16, 0.22222],
 						"CeNa": [0, 0],
-						"NNwS": [72, 0]
+						"NNwS": [16, 0]
 					},
 					"vertices": ["NNwS", "CeNa", "WZxU", "QfvF"],
 					"texture": 0
 				},
 				"qQs8pZui": {
 					"uv": {
-						"rJjR": [0, 1],
-						"9J76": [72, 1],
+						"rJjR": [0, 0.22222],
+						"9J76": [16, 0.22222],
 						"3L9a": [0, 0],
-						"9seO": [72, 0]
+						"9seO": [16, 0]
 					},
 					"vertices": ["9seO", "3L9a", "9J76", "rJjR"],
 					"texture": 0
 				},
 				"LGUQKea1": {
 					"uv": {
-						"wTJW": [4, 68],
-						"IgOp": [68, 68],
-						"He0P": [4, 4],
-						"cxiY": [68, 4]
+						"wTJW": [0.88889, 15.11111],
+						"IgOp": [15.11111, 15.11111],
+						"He0P": [0.88889, 0.88889],
+						"cxiY": [15.11111, 0.88889]
 					},
 					"vertices": ["cxiY", "He0P", "IgOp", "wTJW"],
 					"texture": 0
 				},
 				"rGIobPGF": {
 					"uv": {
-						"9J76": [0, 1],
-						"QfvF": [72, 1],
+						"9J76": [0, 0.22222],
+						"QfvF": [16, 0.22222],
 						"9seO": [0, 0],
-						"CeNa": [72, 0]
+						"CeNa": [16, 0]
 					},
 					"vertices": ["CeNa", "9seO", "QfvF", "9J76"],
 					"texture": 0
 				},
 				"iwcAQSsA": {
 					"uv": {
-						"WZxU": [0, 1],
-						"rJjR": [72, 1],
+						"WZxU": [0, 0.22222],
+						"rJjR": [16, 0.22222],
 						"NNwS": [0, 0],
-						"3L9a": [72, 0]
+						"3L9a": [16, 0]
 					},
 					"vertices": ["3L9a", "NNwS", "rJjR", "WZxU"],
 					"texture": 0
 				},
 				"moxltTQE": {
 					"uv": {
-						"NNwS": [72, 0],
-						"CeNa": [72, 72],
-						"bn5h": [68, 68],
-						"GBzR": [68, 4]
+						"NNwS": [16, 0],
+						"CeNa": [16, 16],
+						"bn5h": [15.11111, 15.11111],
+						"GBzR": [15.11111, 0.88889]
 					},
 					"vertices": ["GBzR", "bn5h", "CeNa", "NNwS"],
 					"texture": 0
@@ -826,69 +826,69 @@
 				"faqjAtaw": {
 					"uv": {
 						"3L9a": [0, 0],
-						"NNwS": [72, 0],
-						"GBzR": [68, 4],
-						"ShCY": [4, 4]
+						"NNwS": [16, 0],
+						"GBzR": [15.11111, 0.88889],
+						"ShCY": [0.88889, 0.88889]
 					},
 					"vertices": ["ShCY", "GBzR", "NNwS", "3L9a"],
 					"texture": 0
 				},
 				"07wQTfvX": {
 					"uv": {
-						"9seO": [0, 72],
+						"9seO": [0, 16],
 						"3L9a": [0, 0],
-						"ShCY": [4, 4],
-						"UExM": [4, 68]
+						"ShCY": [0.88889, 0.88889],
+						"UExM": [0.88889, 15.11111]
 					},
 					"vertices": ["UExM", "ShCY", "3L9a", "9seO"],
 					"texture": 0
 				},
 				"DFaS5Jsh": {
 					"uv": {
-						"CeNa": [72, 72],
-						"9seO": [0, 72],
-						"UExM": [4, 68],
-						"bn5h": [68, 68]
+						"CeNa": [16, 16],
+						"9seO": [0, 16],
+						"UExM": [0.88889, 15.11111],
+						"bn5h": [15.11111, 15.11111]
 					},
 					"vertices": ["bn5h", "UExM", "9seO", "CeNa"],
 					"texture": 0
 				},
 				"SHXLhPOL": {
 					"uv": {
-						"GBzR": [69, 4],
-						"bn5h": [69, 68],
-						"IgOp": [68, 68],
-						"cxiY": [68, 4]
+						"GBzR": [15.33333, 0.88889],
+						"bn5h": [15.33333, 15.11111],
+						"IgOp": [15.11111, 15.11111],
+						"cxiY": [15.11111, 0.88889]
 					},
 					"vertices": ["cxiY", "IgOp", "bn5h", "GBzR"],
 					"texture": 0
 				},
 				"oZ7p8aLI": {
 					"uv": {
-						"ShCY": [4, 3],
-						"GBzR": [68, 3],
-						"cxiY": [68, 4],
-						"He0P": [4, 4]
+						"ShCY": [0.88889, 0.66667],
+						"GBzR": [15.11111, 0.66667],
+						"cxiY": [15.11111, 0.88889],
+						"He0P": [0.88889, 0.88889]
 					},
 					"vertices": ["He0P", "cxiY", "GBzR", "ShCY"],
 					"texture": 0
 				},
 				"HfhHi2ci": {
 					"uv": {
-						"UExM": [3, 68],
-						"ShCY": [3, 4],
-						"He0P": [4, 4],
-						"wTJW": [4, 68]
+						"UExM": [0.66667, 15.11111],
+						"ShCY": [0.66667, 0.88889],
+						"He0P": [0.88889, 0.88889],
+						"wTJW": [0.88889, 15.11111]
 					},
 					"vertices": ["wTJW", "He0P", "ShCY", "UExM"],
 					"texture": 0
 				},
 				"MAMElJtL": {
 					"uv": {
-						"bn5h": [68, 69],
-						"UExM": [4, 69],
-						"wTJW": [4, 68],
-						"IgOp": [68, 68]
+						"bn5h": [15.11111, 15.33333],
+						"UExM": [0.88889, 15.33333],
+						"wTJW": [0.88889, 15.11111],
+						"IgOp": [15.11111, 15.11111]
 					},
 					"vertices": ["IgOp", "wTJW", "UExM", "bn5h"],
 					"texture": 0
@@ -935,9 +935,9 @@
 				},
 				"7rjZWXqh": {
 					"uv": {
-						"rJjR": [72, 72],
-						"WZxU": [72, 0],
-						"9J76": [0, 72],
+						"rJjR": [16, 16],
+						"WZxU": [16, 0],
+						"9J76": [0, 16],
 						"QfvF": [0, 0]
 					},
 					"vertices": ["QfvF", "9J76", "WZxU", "rJjR"],
@@ -948,7 +948,7 @@
 			"uuid": "55bbd790-9ba8-2da8-2184-e3b8df7b15c0"
 		},
 		{
-			"name": "pawn",
+			"name": "Pawn",
 			"color": 4,
 			"origin": [0, 1.75, 0],
 			"rotation": [0, 0, 0],
@@ -1187,7 +1187,7 @@
 			"uuid": "ddd60e08-f70a-51e4-144e-be6062b5a989"
 		},
 		{
-			"name": "bishop",
+			"name": "Bishop",
 			"color": 1,
 			"origin": [0, 1.75, 0],
 			"rotation": [0, 0, 0],
@@ -1690,7 +1690,7 @@
 			"uuid": "9be63398-939a-2f9e-4a39-d0db3f4fac6e"
 		},
 		{
-			"name": "queen",
+			"name": "Queen",
 			"color": 1,
 			"origin": [0, 1.75, 0],
 			"rotation": [0, 0, 0],
@@ -1987,7 +1987,7 @@
 			"uuid": "ff98614c-0bec-3299-1505-f13205ef6fcb"
 		},
 		{
-			"name": "knight",
+			"name": "Knight",
 			"color": 4,
 			"origin": [0, 1.75, 0],
 			"rotation": [0, 0, 0],
@@ -2197,10 +2197,10 @@
 				},
 				"Y9MYkFhe": {
 					"uv": {
+						"S8Dx": [0, 1],
 						"VD3e": [1, 1],
 						"UzBO": [0, 0],
-						"LCLj": [1, 0],
-						"S8Dx": [0, 1]
+						"LCLj": [1, 0]
 					},
 					"vertices": ["LCLj", "UzBO", "VD3e", "S8Dx"],
 					"texture": 0
@@ -2228,9 +2228,9 @@
 				"L2DFBfrT": {
 					"uv": {
 						"4a3B": [0, 1],
+						"S8Dx": [1, 1],
 						"M6j5": [0, 0],
-						"UzBO": [1, 0],
-						"S8Dx": [1, 1]
+						"UzBO": [1, 0]
 					},
 					"vertices": ["UzBO", "M6j5", "S8Dx", "4a3B"],
 					"texture": 0
@@ -2248,9 +2248,9 @@
 				"oUHuL2Om": {
 					"uv": {
 						"k4tq": [0, 1],
+						"0YPP": [1, 1],
 						"kC5B": [0, 0],
-						"LYzY": [1, 0],
-						"0YPP": [1, 1]
+						"LYzY": [1, 0]
 					},
 					"vertices": ["LYzY", "kC5B", "0YPP", "k4tq"],
 					"texture": 0
@@ -2267,10 +2267,10 @@
 				},
 				"9gARxQ6M": {
 					"uv": {
+						"0YPP": [0, 1],
 						"DLSn": [1, 1],
 						"LYzY": [0, 0],
-						"RDdQ": [1, 0],
-						"0YPP": [0, 1]
+						"RDdQ": [1, 0]
 					},
 					"vertices": ["RDdQ", "LYzY", "DLSn", "0YPP"],
 					"texture": 0
@@ -2337,20 +2337,20 @@
 				},
 				"zrVGAda8": {
 					"uv": {
-						"4oSQ": [3, 0],
-						"PmEl": [0, 0],
+						"VVnt": [0, 3],
 						"CYne": [3, 3],
-						"VVnt": [0, 3]
+						"PmEl": [0, 0],
+						"4oSQ": [3, 0]
 					},
 					"vertices": ["4oSQ", "PmEl", "CYne", "VVnt"],
 					"texture": 0
 				},
 				"5tYOLVEk": {
 					"uv": {
+						"CYne": [0, 3],
 						"O2Nd": [3, 3],
-						"nGaY": [3, 0],
 						"4oSQ": [0, 0],
-						"CYne": [0, 3]
+						"nGaY": [3, 0]
 					},
 					"vertices": ["nGaY", "4oSQ", "O2Nd", "CYne"],
 					"texture": 0
@@ -2358,9 +2358,9 @@
 				"g13457ZW": {
 					"uv": {
 						"SDiC": [0, 3],
+						"VVnt": [3, 3],
 						"EJDa": [0, 0],
-						"PmEl": [3, 0],
-						"VVnt": [3, 3]
+						"PmEl": [3, 0]
 					},
 					"vertices": ["PmEl", "EJDa", "VVnt", "SDiC"],
 					"texture": 0
@@ -2399,8 +2399,8 @@
 			"group": "",
 			"width": 72,
 			"height": 72,
-			"uv_width": 72,
-			"uv_height": 72,
+			"uv_width": 16,
+			"uv_height": 16,
 			"particle": false,
 			"use_as_default": false,
 			"layers_enabled": false,

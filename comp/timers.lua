@@ -1,3 +1,5 @@
+local assets = require("./../assets/assets") ---@type FOXChess.Assets
+
 ---@class FOXChess.Timers
 local timers = {}
 
@@ -15,8 +17,6 @@ local class = {}
 ---@package
 class.__index = class
 
-local root = models:newPart("chess_world", "World"):scale(16)
-
 ---Attaches a new timer to an entity or player
 ---@param entity Player|Entity
 ---@param color string
@@ -26,7 +26,7 @@ local root = models:newPart("chess_world", "World"):scale(16)
 function timers.new(entity, color, time)
 	-- Setup rendering to align to entity position in world space
 
-	local part = root:newPart(entity:getUUID()):scale(1 / 16)
+	local part = assets.world:newPart(entity:getUUID()):scale(1 / 16)
 
 	local pivot = part
 		:newPart("pivot"):pos(0, 21) -- World space
