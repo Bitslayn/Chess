@@ -1,6 +1,7 @@
 local boards = require("./comp/boards")
-local timers = require("./comp/timers")
+local hitbox = require("./comp/hitbox")
 
 function events.entity_init()
-	local board = boards.new(player:getPos(), player:getBodyYaw())
+	local board = boards.new()
+	hitbox.new(player, board)
 end

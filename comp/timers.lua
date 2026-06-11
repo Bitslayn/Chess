@@ -18,7 +18,7 @@ local class = {}
 class.__index = class
 
 ---Attaches a new timer to an entity or player
----@param entity Player|Entity
+---@param entity Player|LivingEntity
 ---@param color string
 ---@param time integer
 ---@return FOXChess.Timer

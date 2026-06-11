@@ -12,20 +12,11 @@ local class = {}
 class.__index = class
 
 ---Creates a new chess board
----@param pos Vector3
----@param yaw number
 ---@param state string?
 ---@nodiscard
-function boards.new(pos, yaw, state)
+function boards.new(state)
 	return setmetatable({
-		model = assets.model.Board
-			:copy("Board")
-			:moveTo(assets.world)
-			:pos(pos + vec(0, -1.75 + 1.75 / 16, 0))
-			:rot(0, yaw)
-			:scale(1 / 16)
-			:visible(true),
-		hash = "",
+		model = assets.model.Board:copy("Board"):moveTo(assets.world),
 	}, class):loadState(state):render()
 end
 
