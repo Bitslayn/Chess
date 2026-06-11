@@ -1,29 +1,4 @@
---[[
-Pieces:
-	Uppercase - Black
-	Lowercase - White
-
-	P - Pawn
-	B - Bishop
-	N - Knight
-	R - Rook
-	Q - Queen
-	K - King
-
-	P* - Pawn (En passant)
-	R* - Rook (Castle-able)
-	P&8 - Pawn (Repeated 8 times)
-
-Marker:
-	; - Next column
-	. - Next row
-
-Flags:
-	* - Special
-	& - Repeat
-]]
-
-local pieces = require("./pieces")
+local states = require("./states")
 
 ---@class FOXChess.Boards
 local boards = {}
@@ -34,112 +9,29 @@ local class = {}
 ---@package
 class.__index = class
 
-local symbols = "PBNRQKpbnrqk;.*&"
-
----@type table<string, integer>
-local str_map = {}
----@type table<integer, string>
-local int_map = {}
-
-for i = 1, #symbols do
-	local w = symbols:sub(i, i)
-	str_map[w] = i - 1
-	int_map[i - 1] = w
+---Creates a new chess board
+---@param state string?
+---@nodiscard
+function boards.new(state)
+	return setmetatable({}, class):loadState(state)
 end
 
----@param str string
----@return table
-local function str_to_tbl(str)
-	local tbl = {}
-	local x, y = 0, 0
-
-	for key, op in str:gmatch("(.)(%*?&?%d?)") do
-		local is_piece = key:find("%a")
-		local is_black = key:upper() == key
-		local is_special = op == "*"
-
-		for _ = 1, tonumber(op:match("&(%d)")) or 1 do
-			if is_piece then
-				tbl[y][x] = pieces.new(key, is_black, is_special)
-			elseif key == ";" then
-				x, y = 0, y + 1
-				tbl[y] = {}
-			end
-
-			x = x + 1
-		end
-	end
-
-	return tbl
-end
-
----@param tbl table
+---Creates a chess board save state
 ---@return string
-local function tbl_to_str(tbl)
-	local raw = {}
-
-	for y = 1, 8 do
-		raw[#raw + 1] = ";"
-		for x = 1, 8 do
-			if next(tbl[y]) then
-				raw[#raw + 1] = tbl[y][x] and tbl[y][x].key .. (tbl[y][x].special and "*" or "") or "."
-			end
-		end
-	end
-
-	local tokens = {}
-	local last, count = nil, 1
-
-	for i = 1, #raw + 1 do
-		if last == raw[i] then
-			count = count + 1
-		else
-			tokens[#tokens + 1] = last
-			if count > 1 then
-				tokens[#tokens + 1] = "&" .. count
-			end
-			last, count = raw[i], 1
-		end
-	end
-
-	return table.concat(tokens)
+---@nodiscard
+function class:saveState()
+	return states.tbl_to_str(self.pieces)
 end
 
----@param str string
----@return integer ...
-local function str_to_int(str)
-	local nibbles = {}
-	for w in str:gmatch(".") do
-		nibbles[#nibbles + 1] = str_map[w] or tonumber(w)
-	end
-
-	local bits = {}
-	for i, v in ipairs(nibbles) do
-		local index = math.floor((i - 1) / 8) + 1
-		bits[index] = bit32.replace(bits[index] or 0, v, ((i - 1) % 8) * 4, 4)
-	end
-
-	return table.unpack(bits)
-end
-
----@param ... integer
----@return string
-local function int_to_str(...)
-	local bits = { ... }
-	local str = {}
-
-	for _, bit in ipairs(bits) do
-		for i = 0, 7 do
-			local nibble = bit32.extract(bit, i * 4, 4)
-			str[#str + 1] = str[#str] == "&" and nibble or int_map[nibble]
-		end
-	end
-
-	return table.concat(str)
-end
-
-function boards.new()
-	return setmetatable({}, class)
+---Loads a chess board save state
+---
+---A nil value resets the board
+---@param state string?
+---@return self
+function class:loadState(state)
+	state = type(state) == "string" and state or ";r*nbqkbnr*;p&8;&5P&8;R*NBQKBNR*"
+	self.pieces = states.str_to_tbl(state)
+	return self
 end
 
 return boards

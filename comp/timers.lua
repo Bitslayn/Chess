@@ -17,6 +17,7 @@ local root = models:newPart("chess_world", "World"):scale(16)
 ---@param color string
 ---@param time integer
 ---@return FOXChess.Timer
+---@nodiscard
 function timers.new(entity, color, time)
 	local part = root:newPart(entity:getUUID()):scale(1 / 16)
 

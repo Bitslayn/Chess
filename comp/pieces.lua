@@ -14,6 +14,7 @@ class.__index = class
 ---@param is_black boolean
 ---@param is_special boolean
 ---@return FOXChess.Piece
+---@nodiscard
 function pieces.new(key, is_black, is_special)
 	return setmetatable({ key = key, black = is_black, special = is_special }, class)
 end

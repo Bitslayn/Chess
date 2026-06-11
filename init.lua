@@ -1,9 +1,7 @@
 local boards = require("./comp/boards")
 local timers = require("./comp/timers")
 
-local default = ";r*nbqkbnr*;p&8;&5P&8;R*NBQKBNR*"
-
--- print(board.int_to_str(board.str_to_int(board)))
+print(boards.new():saveState())
 
 function events.entity_init()
 	local black = timers.new(player, "Black", 10 * 60 * 20)
