@@ -23,7 +23,7 @@ Flags:
 	& - Repeat
 ]]
 
-local pieces = require("./piece")
+local pieces = require("./pieces")
 
 ---@class FOXChess.Boards
 local boards = {}
