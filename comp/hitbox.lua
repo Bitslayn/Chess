@@ -10,6 +10,8 @@ local hitbox = {}
 ---@param entity Player|LivingEntity
 ---@param board FOXChess.Board
 function hitbox.new(entity, board)
+	board.moving = true
+
 	local part = assets.world:newPart("Hitbox")
 	common.square(part, 4.5, vec(1, 1, 1))
 
@@ -37,7 +39,9 @@ function hitbox.new(entity, board)
 
 		-- Place chess board
 
-		if common.press(entity, "hitbox") then
+		if common.press(entity, "board") then
+			board.moving = false
+
 			board.model
 				:pos(hit + vec(0, -1.75 + 1.75 / 16, 0))
 				:rot(0, yaw - 90)

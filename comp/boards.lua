@@ -8,7 +8,8 @@ local boards = {}
 
 ---@class FOXChess.Board
 ---@field model ModelPart
----@field pieces FOXChess.Piece[][]
+---@field moving boolean
+---@field pieces FOXChess.Piece[][]? TODO
 local class = {}
 ---@package
 class.__index = class
@@ -47,10 +48,16 @@ local outer = vec(1.125, 1.125)
 ---@param state string?
 ---@nodiscard
 function boards.new(state)
-	local self = setmetatable({ model = assets.model.Board:copy("Board"):moveTo(assets.world) }, class)
+	local self = setmetatable({
+		model = assets.model.Board:copy("Board"):moveTo(assets.world),
+		moving = false,
+	}, class)
+
 	self:loadState(state):render()
 
 	function self.model.preRender(delta)
+		if self.moving then return end
+
 		local mat = self.model:partToWorldMatrix()
 
 		local viewer = client.getViewer()
