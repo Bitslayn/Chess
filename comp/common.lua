@@ -21,19 +21,25 @@ function common.square(root, width, color)
 	end
 end
 
----@type table<string, boolean>
+---table[uuid][id] = boolean
+---@type table<string, table<string, boolean>>
 local was_pressed = {}
 
 ---Returns if the viewer is started swinging or using an item
 ---@param entity Player|LivingEntity
+---@param id string
 ---@return boolean
-function common.press(entity)
+function common.press(entity, id)
 	local uuid = entity:getUUID()
 
-	local is_pressed = entity:isSwingingArm() or entity:isUsingItem()
-	if was_pressed[uuid] == is_pressed then return false end
+	if not was_pressed[uuid] then
+		was_pressed[uuid] = {}
+	end
 
-	was_pressed[uuid] = is_pressed
+	local is_pressed = entity:isSwingingArm() or entity:isUsingItem()
+	if was_pressed[uuid][id] == is_pressed then return false end
+
+	was_pressed[uuid][id] = is_pressed
 
 	return is_pressed
 end

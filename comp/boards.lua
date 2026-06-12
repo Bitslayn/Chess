@@ -63,17 +63,16 @@ function boards.new(state)
 		if not hit then return end
 
 		local rel_pos = (worldToLocal(hit, mat) / 32).xz --[[@as Vector2]]
-		if not (-outer <= rel_pos and rel_pos <= outer) then return end
 
-		if -inner <= rel_pos and rel_pos <= inner then
-			-- Inside of board
+		local pressed = common.press(viewer, "board")
+		local hover_inner = -inner <= rel_pos and rel_pos <= inner
+		local hover_outer = -outer <= rel_pos and rel_pos <= outer
 
+		if hover_inner then
 			local y, x = (rel_pos * -4 + 4):ceil():unpack()
 			host:actionbar(string.char(x + 64) .. y .. (self.pieces[y][x] and ": " .. self.pieces[y][x].color .. " " .. self.pieces[y][x].name or ""))
-		else
-			-- Edge of board
-
-			if common.press(viewer) then
+		elseif hover_outer then
+			if pressed then
 				hitbox.new(viewer, self)
 			end
 		end

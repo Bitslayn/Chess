@@ -37,7 +37,7 @@ function hitbox.new(entity, board)
 
 		-- Place chess board
 
-		if common.press(entity) then
+		if common.press(entity, "hitbox") then
 			board.model
 				:pos(hit + vec(0, -1.75 + 1.75 / 16, 0))
 				:rot(0, yaw - 90)
