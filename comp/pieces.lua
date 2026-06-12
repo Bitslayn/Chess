@@ -30,7 +30,7 @@ function pieces.new(key, is_black, is_special)
 	return setmetatable({
 		key = key,
 		name = names[key:upper()],
-		color = is_black and "black" or "white",
+		color = is_black and "Black" or "White",
 		is_black = is_black,
 		is_special = is_special,
 	}, class)

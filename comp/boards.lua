@@ -66,8 +66,12 @@ function boards.new(state)
 
 		if -inner <= rel_pos and rel_pos <= inner then
 			-- Inside of board
+
+			local y, x = (rel_pos * -4 + 4):ceil():unpack()
+			host:actionbar(string.char(x + 64) .. y .. (self.pieces[y][x] and ": " .. self.pieces[y][x].color .. " " .. self.pieces[y][x].name or ""))
 		else
 			-- Edge of board
+
 			if assets.press(viewer) then
 				hitbox.new(viewer, self)
 			end
@@ -110,9 +114,9 @@ function class:render()
 				assets.model[piece.name] --[[@as ModelPart]]
 					:copy(y .. x)
 					:moveTo(self.model)
-					:pos(y * -8 + 36, 0, x * 8 - 36)
-					:rot(0, piece.is_black and 0 or 180, 0)
-					:primaryTexture("CUSTOM", assets[piece.color])
+					:pos(y * 8 - 36, 0, x * 8 - 36)
+					:rot(0, piece.is_black and 180 or 0, 0)
+					:primaryTexture("CUSTOM", assets.textures[piece.color])
 					:visible(true)
 			end
 		end
