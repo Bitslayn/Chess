@@ -1,4 +1,5 @@
 local assets = require("./../assets/assets") ---@type FOXChess.Assets
+local common = require("./common") ---@type FOXChess.Common
 
 ---@class FOXChess.Hitbox
 local hitbox = {}
@@ -10,20 +11,7 @@ local hitbox = {}
 ---@param board FOXChess.Board
 function hitbox.new(entity, board)
 	local part = assets.world:newPart("Hitbox")
-	part:newSprite("ns")
-		:texture(assets.textures.Black, 16, 16)
-		:renderType("LINES")
-		:size(1, 1)
-		:pos(2.25, 0, 2.25)
-		:rot(90, 0, 0)
-		:scale(4.5)
-	part:newSprite("ew")
-		:texture(assets.textures.Black, 16, 16)
-		:renderType("LINES")
-		:size(1, 1)
-		:pos(2.25, 0, 2.25)
-		:rot(-90, -90, 0)
-		:scale(4.5)
+	common.square(part, 4.5, vec(1, 1, 1))
 
 	function part.preRender(delta)
 		-- Position hitbox
@@ -49,7 +37,7 @@ function hitbox.new(entity, board)
 
 		-- Place chess board
 
-		if assets.press(entity) then
+		if common.press(entity) then
 			board.model
 				:pos(hit + vec(0, -1.75 + 1.75 / 16, 0))
 				:rot(0, yaw - 90)

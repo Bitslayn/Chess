@@ -1,5 +1,6 @@
 local states = require("./states")
 local assets = require("./../assets/assets") ---@type FOXChess.Assets
+local common = require("./common") ---@type FOXChess.Common
 local hitbox = require("./hitbox")
 
 ---@class FOXChess.Boards
@@ -72,7 +73,7 @@ function boards.new(state)
 		else
 			-- Edge of board
 
-			if assets.press(viewer) then
+			if common.press(viewer) then
 				hitbox.new(viewer, self)
 			end
 		end
