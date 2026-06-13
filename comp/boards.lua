@@ -52,6 +52,8 @@ function boards.new(state)
 		model = assets.model.Board:copy("Board"):moveTo(assets.world),
 		moving = false,
 	}, class)
+	self.selection_box = self.model:newPart("selection_box")
+	common.square(self.selection_box, 8, vec(1, 1, 1))
 
 	self:loadState(state):render()
 
@@ -77,6 +79,7 @@ function boards.new(state)
 
 		if hover_inner then
 			local y, x = (rel_pos * -4 + 4):ceil():unpack()
+			self.selection_box:pos(y * 8 - 36, 0, x * 8 - 36)
 			host:actionbar(string.char(x + 64) .. y .. (self.pieces[y][x] and ": " .. self.pieces[y][x].color .. " " .. self.pieces[y][x].name or ""))
 		elseif hover_outer then
 			if pressed then
